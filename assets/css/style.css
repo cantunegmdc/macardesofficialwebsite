@@ -1,0 +1,67 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url('fonts/Kanit/Kanit-Regular.ttf');
+}
+
+#terminal {
+  --color: #f5a9cb;
+  --animation: terminal-glow;
+  text-shadow: 0 0 3px #f5a9cb;
+.terminal, .cmd {
+  background: black;
+  color: #f5a9cb;
+}
+.terminal {
+  --size: 1;
+  --color: #f5a9cb;
+  --error-color: #ff0000;
+  --background: black;
+}
+.terminal .inverted, .cmd .inverted, .cmd .cursor.blink {
+    background-color: #f5a9cb;
+    color: black;
+}
+@-webkit-keyframes terminal-blink {
+  0%, 100% {
+      background-color: #000000;
+      color: #f5a9cb;
+  }
+  50% {
+      background-color: #f5a9cb;
+      color: #000000;
+  }
+}
+@-ms-keyframes terminal-blink {
+  0%, 100% {
+      background-color: #000000;
+      color: #f5a9cb;
+  }
+  50% {
+      background-color: #f5a9cb;
+      color: #000000;
+  }
+}
+@-moz-keyframes terminal-blink {
+  0%, 100% {
+      background-color: #000000;
+      color: #f5a9cb;
+  }
+  50% {
+      background-color: #f5a9cb;
+      color: #fff;
+  }
+}
+@keyframes terminal-blink {
+  0%, 100% {
+      background-color: #000000;
+      color: #f5a9cb;
+  }
+  50% {
+      background-color: #f5a9cb;
+      color: #000000;
+  }
+}
+.cmd, .cmd span:not(.fas):not(.far):not(.fa), .terminal, .terminal-output>:not(.raw), .terminal-output>:not(.raw) a, .terminal-output>:not(.raw) span:not(.fas):not(.far):not(.fa) {
+  font-family: myFirstFont;
+  font-size: var(--size);
+}

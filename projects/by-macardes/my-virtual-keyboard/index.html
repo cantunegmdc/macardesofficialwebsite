@@ -1,0 +1,513 @@
+<!-- 
+  Macärdès Web Virtual Keyboard
+  Made by Macärdès De Pröducèz
+  Facebook: https://www.facebook.com/profile.php?id=61554919799713&mibextid=LQQJ4d 
+  YouTube: https://www.youtube.com/@macadesdeproducez
+  Instagram: http://instagram.com/themacardes
+  Tik Tok: www.tiktok.com/@themacardes
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>My Simple Keyboard - Macärdès De Pröducèz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zen+Dots&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {"50":"#fdf2f8","100":"#fce7f3","200":"#fbcfe8","300":"#f9a8d4","400":"#f472b6","500":"#ec4899","600":"#db2777","700":"#be185d","800":"#9d174d","900":"#831843","950":"#500724"}
+          }
+        },
+        fontFamily:{
+          'primary': ['Zen Dots'],
+          'secondary': ['Kanit', 'sans-serif'],
+          'cursive': ['Dancing Script', 'cursive']
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+    }
+  </style>
+  <style>
+    .hg-theme-default {
+        background-color: #000000;
+        border: 1px solid #e63b7a;
+        border-radius: 10px;
+        box-sizing: border-box;
+        font-family: 'Kanit', sans-serif;
+        overflow: hidden;
+        padding: 5px;
+        touch-action: manipulation;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        width: 100%;
+    }
+    .hg-theme-default .hg-button span {
+        pointer-events: none;
+        color: #e63b7a;
+    }
+    .hg-theme-default button.hg-button {
+        border-width: 0;
+        font-size: inherit;
+        outline: 0;
+    }
+    .hg-theme-default .hg-button {
+        display: inline-block;
+        flex-grow: 1;
+    }
+    .hg-theme-default .hg-row {
+        display: flex;
+    }
+    .hg-theme-default .hg-row:not(:last-child) {
+        margin-bottom: 5px;
+    }
+    .hg-theme-default .hg-row .hg-button-container,
+    .hg-theme-default .hg-row .hg-button:not(:last-child) {
+        margin-right: 5px;
+    }
+    .hg-theme-default .hg-row > div:last-child {
+        margin-right: 0;
+    }
+    .hg-theme-default .hg-row .hg-button-container {
+        display: flex;
+    }
+    .hg-theme-default .hg-button {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        align-items: center;
+        background: #000000;
+        border-bottom: 1px solid #e63b7a;
+        border-radius: 5px;
+        box-shadow: 0 0 3px -1px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        padding: 5px;
+    }
+    .hg-theme-default .hg-button.hg-standardBtn {
+        width: 20px;
+    }
+    .hg-theme-default .hg-button.hg-activeButton {
+        background: #ee719e;
+    }
+    .hg-theme-default.hg-layout-numeric .hg-button {
+        align-items: center;
+        display: flex;
+        height: 60px;
+        justify-content: center;
+        width: 33.3%;
+    }
+    .hg-theme-default .hg-button.hg-button-numpadadd,
+    .hg-theme-default .hg-button.hg-button-numpadenter {
+        height: 85px;
+    }
+    .hg-theme-default .hg-button.hg-button-numpad0 {
+        width: 105px;
+    }
+    .hg-theme-default .hg-button.hg-button-com {
+        max-width: 85px;
+    }
+    .hg-theme-default .hg-button.hg-standardBtn.hg-button-at {
+        max-width: 45px;
+    }
+    .hg-theme-default .hg-button.hg-selectedButton {
+        background: rgba(5, 25, 70, 0.53);
+        color: #fff;
+    }
+    .hg-theme-default .hg-button.hg-standardBtn[data-skbtn=".com"] {
+        max-width: 82px;
+    }
+    .hg-theme-default .hg-button.hg-standardBtn[data-skbtn="@"] {
+        max-width: 60px;
+    }
+    .hg-candidate-box {
+        background: #ececec;
+        border-bottom: 2px solid #b5b5b5;
+        border-radius: 5px;
+        display: inline-flex;
+        margin-top: -10px;
+        max-width: 272px;
+        position: absolute;
+        transform: translateY(-100%);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+    ul.hg-candidate-box-list {
+        display: flex;
+        flex: 1;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li.hg-candidate-box-list-item {
+        align-items: center;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        width: 40px;
+    }
+    li.hg-candidate-box-list-item:hover {
+        background: rgba(0, 0, 0, 0.03);
+        cursor: pointer;
+    }
+    li.hg-candidate-box-list-item:active {
+        background: rgba(0, 0, 0, 0.1);
+    }
+    .hg-candidate-box-prev:before {
+        content: "◄";
+    }
+    .hg-candidate-box-next:before {
+        content: "►";
+    }
+    .hg-candidate-box-next,
+    .hg-candidate-box-prev {
+        align-items: center;
+        color: #969696;
+        cursor: pointer;
+        display: flex;
+        padding: 0 10px;
+    }
+    .hg-candidate-box-next {
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .hg-candidate-box-prev {
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    .hg-candidate-box-btn-active {
+        color: #444;
+    }
+  </style>
+  
+</head>
+
+<body class="bg-black font-secondary">
+  <div class="p-4">
+    <div id="toast-message-cta" class="fixed z-50 w-full max-w-xs p-4 z-90 text-white bg-black rounded-lg border border-pink-500 shadow" role="alert">
+        <div class="flex">
+            <img class="w-8 h-8 rounded-full" src="assets/logo/logo.png" alt="Jese Leos image"/>
+            <div class="ms-3 text-sm font-normal">
+                <span class="font-cursive mb-1 text-sm font-semibold text-yellow-500">Happy New Year 2024</span>
+                <div class="text-yellow-500 mb-2 text-sm font-normal">2024 - A strong year of the dragon! Bye bye 2023 and happy new year 2024!</div>   
+            </div>
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-black justify-center items-center flex-shrink-0 text-white hover:text-primary-50 rounded-lg focus:ring-2 focus:ring-primary-300 p-1.5 hover:bg-primary-500 inline-flex h-8 w-8" data-dismiss-target="#toast-message-cta" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+  </div>
+  <nav class="bg-black fixed w-full z-20 top-0 start-0 border-b border-pink-500">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="https://official.themacardes.repl.co" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="assets/logo/logo.png" class="h-10 w-10" alt="M Logo">
+    </a>
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+
+      </button>
+    </div>
+    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+      <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-pink-500 rounded-lg bg-black md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black">
+        <li>
+          <a href="#home" class="block py-2 px-3 text-white bg-pink-700 rounded md:bg-transparent md:text-pink-700 md:p-0" aria-current="page">Home</a>
+        </li>
+        <li>
+          <a href="#simplekeyboard" class="block py-2 px-3 text-white rounded hover:bg-slate-900 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Keyboard</a>
+        </li>
+        <li>
+          <a href="#about" class="block py-2 px-3 text-white rounded hover:bg-slate-900 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a>
+        </li>
+        <li>
+          <a href="#contact" class="block py-2 px-3 text-white rounded hover:bg-slate-900 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a>
+        </li>
+        <li>
+          <a href="https://replit.com/@themacardes/official" class="block py-2 px-3 text-white underline rounded hover:bg-slate-900 md:hover:bg-transparent md:hover:text-pink-700 md:p-0">Fork on Replit</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+  <section id="home" class="bg-center bg-no-repeat bg-[url('assets/hero/1.png')] bg-pink-700 bg-blend-multiply">
+      <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+          <h1 class="mb-4 text-4xl font-extrabold font-primary tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Hello! I am Macärdès De Pröducèz</h1>
+          <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">I'll show case my virtual keyboard I made</p>
+          <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+              <a href="#simplekeyboard" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300">
+                  My keyboard
+                  <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                  </svg>
+              </a>
+              <a href="#contact" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                  Contact me
+              </a>  
+          </div>
+      </div>
+  </section>
+  <section id="simplekeyboard">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+      <h1 class="mb-4 text-4xl font-extrabold font-primary tracking-tight leading-none text-white md:text-5xl lg:text-6xl">My Simple Keyboard</h1>
+      <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">This is a simple keyboard that I made using html and css.</p>
+      <input class="input mb-4 bg-black border border-pink-300 text-white text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5" placeholder="Tap on the virtual keyboard to start" />
+      <div class="simple-keyboard"></div>
+    </div>
+  </section>
+  <section class="bg-black">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+        <div class="max-w-screen-md mb-8 lg:mb-16">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white">Designed for developer</h2>
+            <p class="text-white sm:text-xl">I made this simple virtual keyboard with the purpose that...</p>
+        </div>
+        <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+            <div>
+                <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
+                    </svg>
+
+                </div>
+                <h3 class="mb-2 text-xl font-bold text-white">Tap Into Typing with Macärdès Keyboard</h3>
+                <p class="text-white">Unleash your words with a vibrant virtual keyboard designed to make typing effortless and expressive.</p>
+            </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                  </svg>
+
+              </div>
+              <h3 class="mb-2 text-xl font-bold text-white">Let Your Fingers Dance Across a Canvas of Keys</h3>
+              <p class="text-white">Experience a seamless and visually captivating typing experience with Macärdès Keyboard's beautifully crafted keys and intuitive layout.</p>
+          </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                </svg>
+
+              </div>
+              <h3 class="mb-2 text-xl font-bold text-white">Customize Your Keyboard, Express Your Style</h3>
+              <p class="text-white">Make your keyboard uniquely yours by choosing from a range of vibrant themes and color schemes that match your personality.</p>
+          </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
+                </svg>
+              </div>
+              <h3 class="mb-2 text-xl font-bold text-white">Effortless Input, Enhanced Accuracy</h3>
+              <p class="text-white">Seamlessly switch between languages with Macärdès Keyboard's multilingual support, allowing you to communicate effortlessly across borders.</p>
+          </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                </svg>
+              </div>
+              <h3 class="mb-2 text-xl font-bold text-white">Powered by HTML & JS, Built for Versatility</h3>
+              <p class="text-white">Enjoy the flexibility of a keyboard that runs directly within your web browser, accessible on any device with internet connectivity.</p>
+          </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" />
+                </svg>
+
+
+              </div>
+              <h3 class="mb-2 text-xl font-bold text-white">Functions, config and everything I made just one file called "index.html"</h3>
+              <p class="text-white">This is the core of the living keyboard, it's the heart of the project. With this file, you can customize the keyboard to your liking, add functionalities, add themes, and more.</p>
+          </div>
+        </div>
+    </div>
+  </section>
+  <section id="about" class="bg-black">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="max-w-screen-lg text-white sm:text-lg">
+            <h2 class="mb-4 text-4xl tracking-tight font-bold font-primary">I'm Macärdès De Pröducèz</h2>
+            <p class="font-secondary mb-4 font-light">My work is to make something change your mind, visualize it, make everyone have a fantastic feeling!</p>
+            <p class="font-secondary mb-4 font-medium">My web virtual keyboard is a part of it! It's a keyboard that runs directly within your web browser, accessible on any device with internet connectivity.</p>
+            <a href="#" class="inline-flex items-center font-medium font-secondary text-primary-600 hover:text-primary-800">
+                Buy now!
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-1 w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+
+            </a>
+        </div>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+        <h2 class="font-primary mb-4 text-4xl tracking-tight font-extrabold text-center text-white">Contact me</h2>
+        <p class="font-secondary mb-8 lg:mb-16 font-light text-center text-white">Have any trouble? Contact me!</p>
+        <form action="https://formsubmit.co/dayn01914@gmail.com" method="POST" class="font-secondary space-y-8">
+            <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
+                <input name="email" type="email" id="email" class="shadow-sm bg-black border border-primary-300 text-white text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="name@example.com" required>
+            </div>
+            <div>
+                <label for="subject" class="block mb-2 text-sm font-medium text-white">Subject</label>
+                <input name="subject" type="text" id="subject" class="shadow-sm bg-black border border-primary-300 text-white text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Let me know how i can help you" required>
+            </div>
+            <div class="sm:col-span-2">
+                <label for="message" class="block mb-2 text-sm font-medium text-white">Your message</label>
+                <textarea name="message" id="message" rows="6" class="shadow-sm bg-black border border-primary-300 text-white text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Leave a comment..."></textarea>
+            </div>
+            <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300">Send message</button>
+        </form>
+    </div>
+  </section>
+  <footer class="font-primary bg-black rounded-lg shadow m-4">
+      <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+          <div class="sm:flex sm:items-center sm:justify-between">
+              <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                  <img src="assets/logo/logo.png" class="h-8" alt="M Logo" />
+              </a>
+              <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0">
+                  <li>
+                      <a href="https://www.facebook.com/profile.php?id=61554919799713&mibextid=LQQJ4d" class="hover:underline me-4 md:me-6">Facebook</a>
+                  </li>
+                  <li>
+                      <a href="https://www.instagram.com/themacardes/" class="hover:underline me-4 md:me-6">Instagram</a>
+                  </li>
+                  <li>
+                      <a href="https://www.youtube.com/@macadesdeproducez" class="hover:underline me-4 md:me-6">YouTube</a>
+                  </li>
+                  <li>
+                      <a href="www.tiktok.com/@themacardes" class="hover:underline">Tik Tok</a>
+                  </li>
+              </ul>
+          </div>
+          <hr class="my-6 border-pink-500 sm:mx-auto lg:my-8" />
+        <span class="block text-sm text-white sm:text-end">© 2023 <a href="index.html" class="hover:underline">Macärdès De Pröducèz & VNR&I Association</a>. All Rights Reserved. Made with TailwindCSS & Flowbite</span>
+      </div>
+  </footer> 
+  <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+  <script
+    src="https://replit.com/public/js/replit-badge-v2.js"
+    theme="pink"
+    position="bottom-right"
+    caption="Macädès De Pröducèz on Replit"
+  ></script>
+  <script>
+    const Keyboard = window.SimpleKeyboard.default;
+
+    const myKeyboard = new Keyboard({
+      layout: {
+        'default': [
+          '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
+          '{tab} q w e r t y u i o p [ ] \\',
+          '{lock} a s d f g h j k l ; \' {enter}',
+          '{shift} z x c v b n m , . / {shift}',
+          '.com @ {space}'
+        ],
+        'shift': [
+          '~ ! @ # $ % ^ &amp; * ( ) _ + {bksp}',
+          '{tab} Q W E R T Y U I O P { } |',
+          '{lock} A S D F G H J K L : " {enter}',
+          '{shift} Z X C V B N M &lt; &gt; ? {shift}',
+          '.com @ {space}'
+        ]
+      },
+      layoutName: "default",
+      display: {
+        '{bksp}': 'DELETE',
+        '{enter}': 'ENTER',
+        '@': 'at'
+      },
+      mergeDisplay: true,
+      theme: "hg-theme-default",
+      buttonAttributes: [
+        {
+          attribute: "aria-label",
+          value: "bee",
+          buttons: "b B"
+        }
+      ],
+      buttonTheme: [
+        {
+          class: "myCustomClass",
+          buttons: "Q W E R T Y q w e r t y"
+        },
+        {
+          class: "anotherCustomClass",
+          buttons: "Q q"
+        }
+      ],
+      debug: false,
+      useMouseEvents: true,
+      useTouchEvents: true,
+      autoUseTouchEvents: true,
+      preventMouseDownDefault: false,
+      preventMouseUpDefault: false,
+      stopMouseDownPropagation: false,
+      stopMouseUpPropagation: false,
+      disableCaretPositioning: false,
+      useButtonTag: false,
+      newLineOnEnter: false,
+      tabCharOnTab: true,
+      inputName: "default",
+      maxLength: 10000,
+      disableRowButtonContainers: false,
+      disableButtonHold: false,
+      syncInstanceInputs: false,
+      physicalKeyboardHighlight: false,
+      physicalKeyboardHighlightPress: false,
+      physicalKeyboardHighlightTextColor: "white",
+      physicalKeyboardHighlightBgColor: "#9ab4d0",
+      onKeyPress: button => onKeyPress(button),
+      onChange: input => onChange(input),
+      onRender: () => console.log("Macärdès Keyboard refreshed"),
+      beforeFirstRender: () => console.log("Macärdès Keyboard will render for the first time"),
+      beforeRender: () => console.log("Macärdès Keyboard will render"),
+      onInit: (keyboard) => console.log("Macärdès Keyboard initialized", keyboard),
+      onKeyReleased: (button) => console.log("Macärdès Keyboard button released", button),
+      onChangeAll: (inputs) => console.log(inputs),
+      rtl: false,
+      layoutCandidates: {
+       a: "阿 啊 呵 腌 嗄 吖 锕"
+      },
+      enableLayoutCandidates: false,
+      layoutCandidatesPageSize: 5,
+    });
+
+    function onChange(input) {
+      document.querySelector(".input").value = input;
+      console.log("Input changed", input);
+    }
+
+    function onKeyPress(button) {
+      console.log("Button pressed", button);
+    }
+  </script>
+  
+</body>
+
+</html>

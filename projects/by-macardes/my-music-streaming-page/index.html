@@ -1,0 +1,1236 @@
+<!-- 
+  Macärdès Web Streaming Page
+  Made by Macärdès De Pröducèz
+  Facebook: https://www.facebook.com/profile.php?id=61554919799713&mibextid=LQQJ4d 
+  YouTube: https://www.youtube.com/@macadesdeproducez
+  Instagram: http://instagram.com/themacardes
+  Tik Tok: www.tiktok.com/@themacardes
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>My Stream - Macärdès De Pröducèz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zen+Dots&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {"50":"#fdf2f8","100":"#fce7f3","200":"#fbcfe8","300":"#f9a8d4","400":"#f472b6","500":"#ec4899","600":"#db2777","700":"#be185d","800":"#9d174d","900":"#831843","950":"#500724"}
+          }
+        },
+        fontFamily:{
+          'primary': ['Zen Dots'],
+          'secondary': ['Kanit', 'sans-serif'],
+          'cursive': ['Dancing Script', 'cursive']
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+    }
+  </style>
+  <style>
+    #volume-range::-webkit-slider-thumb {
+      background-color: #eb34a1;
+    }
+
+    #tracking-range::-webkit-slider-thumb {
+      background-color: #eb34a1;
+    }
+  </style>
+  
+</head>
+
+<body class="bg-black font-secondary">
+  <div class="p-4">
+    <div id="toast-message-cta" class="fixed z-50 w-full max-w-xs p-4 z-90 text-white bg-black rounded-lg border border-pink-500 shadow" role="alert">
+        <div class="flex">
+            <img class="w-8 h-8 rounded-full" src="assets/logo/logo.png" alt="Jese Leos image"/>
+            <div class="ms-3 text-sm font-normal">
+                <span class="font-cursive mb-1 text-sm font-semibold text-yellow-500">Happy New Year 2024</span>
+                <div class="text-yellow-500 mb-2 text-sm font-normal">2024 - A strong year of the dragon! Bye bye 2023 and happy new year 2024!</div>   
+            </div>
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-black justify-center items-center flex-shrink-0 text-white hover:text-primary-50 rounded-lg focus:ring-2 focus:ring-primary-300 p-1.5 hover:bg-primary-500 inline-flex h-8 w-8" data-dismiss-target="#toast-message-cta" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+  </div>
+  <nav class="sm:ml-14 bg-black fixed w-full z-20 top-0 start-0 border-b border-pink-500">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="https://official.themacardes.repl.co" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="assets/logo/logo.png" class="h-10 w-10" alt="M Logo">
+    </a>
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <button data-drawer-target="volume-sidebar" data-drawer-toggle="volume-sidebar" aria-controls="volume-sidebar" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          </svg>
+
+        </button>
+        <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+
+      </button>
+    </div>
+    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+      <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-pink-500 rounded-lg bg-black md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-black">
+        <li>
+          <a href="#home" class="block py-2 px-3 text-white bg-pink-700 rounded md:bg-transparent md:text-pink-700 md:p-0" aria-current="page">Home</a>
+        </li>
+        <li>
+          <a href="#stream" class="block py-2 px-3 text-white rounded hover:bg-slate-900 md:hover:bg-transparent md:hover:text-pink-700 md:p-0">Stream</a>
+        </li>
+        <li>
+          <a href="#about" class="block py-2 px-3 text-white rounded hover:bg-slate-900 md:hover:bg-transparent md:hover:text-pink-700 md:p-0">About</a>
+        </li>
+        <li>
+          <a href="#contact" class="block py-2 px-3 text-white rounded hover:bg-slate-900 md:hover:bg-transparent md:hover:text-pink-700 md:p-0">Contact</a>
+        </li>
+        <li>
+          <a href="https://replit.com/@themacardes/official" class="block py-2 px-3 text-white underline rounded hover:bg-slate-900 md:hover:bg-transparent md:hover:text-pink-700 md:p-0">Fork on Replit</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+  <div id="sticky-banner" tabindex="-1" class="fixed top-[73px] sm:top-[65px] start-0 z-30 flex justify-between w-full p-4 border-b border-pink-500 bg-black">
+      <div class="flex items-center mx-auto">
+          <p class="flex items-center text-sm font-normal text-white">
+              <span class="inline-flex p-1 me-3 bg-pink-200 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-pink-500">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                </svg>
+
+                  <span class="sr-only">Light bulb</span>
+              </span>
+              <span>Better with headphone and full controls with Bluetooth devices</span>
+          </p>
+      </div>
+      <div class="flex items-center">
+          <button data-dismiss-target="#sticky-banner" type="button" class="flex-shrink-0 inline-flex justify-center w-7 h-7 items-center text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+              </svg>
+              <span class="sr-only">Close banner</span>
+          </button>
+      </div>
+  </div>
+  <aside id="volume-sidebar" class="fixed top-0 left-0 z-40 w-16 h-screen -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+     <div class="h-full px-3 py-4 overflow-y-auto bg-black border-r border-pink-500">
+      <div>
+        <ul class="space-y-2 font-medium">
+          <li>
+             <a data-tooltip-target="tooltip-feedback" data-modal-target="feedback-modal" data-modal-toggle="feedback-modal" href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-900 group">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+               </svg>
+             </a>
+             <div id="tooltip-feedback" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                 Feedback
+                 <div class="tooltip-arrow" data-popper-arrow></div>
+             </div>
+          </li>
+          <li>
+             <a data-tooltip-target="tooltip-shop" data-tooltip-placement="right" class="flex items-center p-2 rounded-lg hover:bg-gray-900 group">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+               </svg>
+             </a>
+            <div id="tooltip-shop" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Shop
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+          </li>
+          <li>
+             <a data-tooltip-target="tooltip-community" data-tooltip-placement="right" class="flex items-center p-2 rounded-lg hover:bg-gray-900 group">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+               </svg>
+
+             </a>
+            <div id="tooltip-community" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Community
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+          </li>
+          <li>
+             <a data-tooltip-target="tooltip-website" data-tooltip-placement="right" class="flex items-center p-2 rounded-lg hover:bg-gray-900 group">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+               </svg>
+
+             </a>
+            <div id="tooltip-website" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Website
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+          </li>
+          <li>
+             <a data-tooltip-target="tooltip-visibility" data-tooltip-placement="right" class="flex items-center p-2 rounded-lg hover:bg-gray-900 group">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+               </svg>
+
+             </a>
+            <div id="tooltip-visibility" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Visibility
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+          </li>
+          <li>
+             <button data-tooltip-target="tooltip-mute" data-tooltip-placement="right" class="amplitude-mute flex items-center p-2 rounded-lg hover:bg-gray-900 group">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+               </svg>
+             </button>
+            <div id="tooltip-mute" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Mute volume
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+       <div class="mb-18 rotate-90 mx-auto flex items-center">
+         <div class="rotate-180 mx-4">
+           <button type="button" class="amplitude-volume-up text-sm text-white absolute end-0 bottom-4">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-white">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+             </svg>
+
+               <span class="sr-only">Volume Up</span>
+           </button>
+           <button type="button" class="amplitude-volume-down text-sm text-white absolute start-0 bottom-4">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-white">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+             </svg>
+
+                <span class="sr-only">Volume Down</span>
+            </button>
+           <input id="volume-range" type="range" value="35" class="amplitude-volume-slider w-48 sm:w-64 lg:w-60 h-2 bg-pink-200 rounded-lg appearance-none cursor-pointer">
+           <span class="text-sm text-white absolute start-0 -bottom-4">Min (0%)</span>
+           <span class="text-sm text-white absolute end-0 -bottom-4">Max (100%)</span>
+         </div>
+         <div class="rotate-180">
+           <label for="volume-range" class="block mb-2 text-sm font-medium text-white">Volume</label>
+         </div>
+       </div>
+    </div>
+  </aside>
+  <div id="feedback-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative p-4 w-full max-w-md max-h-full">
+          <!-- Modal content -->
+          <div class="relative bg-black rounded-lg shadow">
+              <!-- Modal header -->
+              <div class="flex items-center justify-between p-4 md:p-5 border-b border-pink-600 rounded-t">
+                  <h3 class="font-primary text-xl font-semibold text-white">
+                      Rate this artist
+                  </h3>
+                  <button type="button" class="end-2.5 text-white bg-transparent hover:bg-slate-900 hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="feedback-modal">
+                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                      </svg>
+                      <span class="sr-only">Close modal</span>
+                  </button>
+              </div>
+              <!-- Modal body -->
+              <div class="p-4 md:p-5">
+                  <form class="font-secondary space-y-4" action="https://formsubmit.co/lumiereanderson@gmail.com" method="POST">
+                      <div>
+                          <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
+                          <input type="email" name="email" id="email" class="bg-black border border-gray-300 text-white text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5" placeholder="name@example.com" required>
+                      </div>
+                      <div>
+                          <label for="message" class="block mb-2 text-sm font-medium text-white">Your message</label>
+                          <input type="message" name="message" id="message" placeholder="Message" class="bg-black border border-gray-300 text-white text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5" required>
+                      </div>
+
+                    <label for="countries" class="block mb-2 text-sm font-medium text-white">Rate this artist by star</label>
+                    <select id="startrating" name="stars" class="bg-black border border-gray-300 text-white text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5">
+                      <option value="1" selected>1 star</option>
+                      <option value="2">2 stars</option>
+                      <option value="3">3 stars</option>
+                      <option value="4">4 stars</option>
+                      <option value="5">5 stars</option>
+                    </select>
+
+                      <button type="submit" class="w-full text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Send feedback</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div> 
+
+
+  <section class="sm:ml-14 bg-center bg-no-repeat bg-[url('assets/hero/1.png')] bg-pink-700 bg-blend-multiply">
+      <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+          <h1 class="mb-4 text-4xl font-extrabold font-primary tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Hello! I am Macärdès De Pröducèz</h1>
+          <p class="mb-8 text-lg font-normal text-white lg:text-xl sm:px-16 lg:px-48">Welcome to my streaming page!</p>
+          <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+              <a href="#stream" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300">
+                  My streaming page
+                  <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                  </svg>
+              </a>
+              <a href="#contact" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                  Contact me
+              </a>  
+          </div>
+      </div>
+  </section>
+
+  <section id="stream" class="sm:ml-14 bg-black font-secondary p-8">
+    <h1 class="font-primary text-white text-2xl font-bold mb-2">My Stream</h1>
+    <p class="text-white">Explore my music and creations</p>
+    <div id="audio-stream" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8 border border-pink-400 rounded-lg">
+      <div class="bg-black p-4 rounded-lg shadow-md">
+        <div class="p-4 rounded-lg bg-black border border-pink-900 mb-4">
+          <h1 class="font-primary text-white text-lg text-bold mb-4">Notice:</h1>
+          <p class="text-white">Use your keyboard to interact with this stream effectly. <a data-modal-target="keyboard-modal" data-modal-toggle="keyboard-modal" class="underline text-pink-500 hover:underline">View Keyboard Shortcuts</a></p>
+          <div id="keyboard-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-black rounded-lg shadow">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                <h3 class="font-primary text-xl font-semibold text-white">
+                    Keyboard Shortcuts
+                </h3>
+                <button type="button" class="text-white bg-transparent hover:bg-pink-500 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="keyboard-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4">
+                
+
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-white">
+        <thead class="text-xs text-white uppercase bg-black">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Key
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Description
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-black border-b">
+                <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                    <kbd class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Spacebar</kbd>
+                </th>
+                <td class="px-6 py-4">
+                    Play/pause the song
+                </td>
+            </tr>
+            <tr class="bg-black">
+                <th scope="row" class="inline-flex items-center px-6 py-4 font-medium text-white whitespace-nowrap">
+                    <kbd class="inline-flex items-center me-1 px-2 py-1.5 text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+                        <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 10">
+                            <path d="M9.207 1A2 2 0 0 0 6.38 1L.793 6.586A2 2 0 0 0 2.207 10H13.38a2 2 0 0 0 1.414-3.414L9.207 1Z"/>
+                        </svg>
+                        <span class="sr-only">Arrow key up</span>
+                    </kbd>
+                    <kbd class="inline-flex items-center px-2 py-1.5 text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+                        <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 10">
+                            <path d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z"/>
+                        </svg>
+                        <span class="sr-only">Arrow key down</span>
+                    </kbd>
+                    <span class="mx-2">or</span>
+                    <kbd class="rtl:rotate-180 inline-flex items-center me-1  px-2 py-1.5 text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+                        <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 10 16">
+                            <path d="M8.766.566A2 2 0 0 0 6.586 1L1 6.586a2 2 0 0 0 0 2.828L6.586 15A2 2 0 0 0 10 13.586V2.414A2 2 0 0 0 8.766.566Z"/>
+                        </svg>
+                        <span class="sr-only">Arrow key left</span>
+                    </kbd>
+                    <kbd class="rtl:rotate-180 inline-flex items-center px-2 py-1.5 text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
+                        <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 10 16">
+                            <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z"/>
+                        </svg>
+                        <span class="sr-only">Arrow key right</span>
+                    </kbd>
+                </th>
+                <td class="px-6 py-4">
+                    Switch to the previous/next song.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+            </div>
+        </div>
+    </div>
+          </div>
+        </div>
+        <img data-amplitude-song-info="cover_art_url" class="w-64 h-64 rounded-full border border-pink-500 border-2 mb-8"/>
+        <div class="flex grid grid-cols-2">
+          <div>
+            <h2 data-amplitude-song-info="name" class="font-primary text-white text-xl font-bold mb-2"></h2>
+            <p data-amplitude-song-info="artist" class="text-white"></p>
+          </div>
+          <div class="ml-24">
+            <button id="playbaclSpeedButton" data-dropdown-toggle="playbackSpeedDropdown">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+
+            </button>
+            <div id="playbackSpeedDropdown" class="z-10 hidden bg-black divide-y border border-pink-500 divide-gray-100 rounded-lg shadow w-24">
+                <ul class="py-2 text-sm text-white" aria-labelledby="playbaclSpeedButton">
+                  <li>
+                    <button href="#" class="amplitude-playback-speed-10 block px-4 py-2 hover:bg-slate-900">Play at 1.0</button>
+                  </li>
+                  <li>
+                    <button href="#" class="amplitude-playback-speed-15 block px-4 py-2 hover:bg-slate-900">Play at 1.5</button>
+                  </li>
+                  <li>
+                    <button href="#" class="amplitude-playback-speed-20 block px-4 py-2 hover:bg-slate-900">Play at 2.0</button>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="h-px my-8 bg-pink-500 border-0">
+        <div class="mb-4">
+          <div>
+            <p class="text-white"><span class="amplitude-current-hours"></span>:<span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span> - <span class="amplitude-duration-hours"></span>:<span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span></p>
+            <input id="tracking-range" type="range" class="amplitude-song-slider w-full" step=".1"/>
+            <button type="button" data-amplitude-location="30" class="amplitude-skip-to inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-primary-500 border border-primary-500 rounded-lg focus:ring-4 focus:ring-primary-400">Skip to</button>
+            <button type="button" class="amplitude-stop inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-primary-500 border border-primary-500 rounded-lg focus:ring-4 focus:ring-primary-400">Stop</button>
+            <div class="amplitude-wave-form"></div>
+          </div>
+          <div>
+
+
+            <div class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-black border border-pink-500 rounded-full bottom-4 left-1/2">
+                <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
+                    <button data-tooltip-target="tooltip-shuffle" type="button" class="amplitude-shuffle inline-flex flex-col items-center justify-center px-5 rounded-s-full group">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                      </svg>
+
+                        <span class="sr-only">Shuffle</span>
+                    </button>
+                    <div id="tooltip-shuffle" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-black rounded-lg shadow-sm opacity-0 tooltip">
+                        Shuffle
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <button data-tooltip-target="tooltip-previous" type="button" class="amplitude-prev inline-flex flex-col items-center justify-center px-5 group">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z" />
+                      </svg>
+
+                        <span class="sr-only">Previous</span>
+                    </button>
+                    <div id="tooltip-previous" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-black rounded-lg shadow-sm opacity-0 tooltip">
+                        Previous
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <button data-tooltip-target="tooltip-play-pause" type="button" class="amplitude-play-pause inline-flex items-center justify-center w-10 h-10 font-medium bg-pink-600 rounded-full group focus:ring-4 focus:ring-pink-300 focus:outline-none">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5V18M15 7.5V18M3 16.811V8.69c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811Z" />
+                          </svg>
+
+                            <span class="sr-only">Play/Pause</span>
+                        </button>
+                        <div id="tooltip-play-pause" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-black rounded-lg shadow-sm opacity-0 tooltip">
+                            Play/Pause
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+                    </div>
+                    <button data-tooltip-target="tooltip-next" type="button" class="amplitude-next inline-flex flex-col items-center justify-center px-5 group">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z" />
+                      </svg>
+                        <span class="sr-only">Next</span>
+                    </button>
+                    <div id="tooltip-next" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-black rounded-lg shadow-sm opacity-0 tooltip">
+                        Next
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <button data-tooltip-target="tooltip-repeat" type="button" class="amplitude-repeat inline-flex flex-col items-center justify-center px-5 group">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                      </svg>
+
+                        <span class="sr-only">Repeat</span>
+                    </button>
+                    <div id="tooltip-repeat" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-black rounded-lg shadow-sm opacity-0 tooltip">
+                        Repeat
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-black p-4 rounded-lg shadow-md overflow-auto h-46">
+        <h1 class="font-primary text-white text-2xl font-bold mb-2">My Tracks</h1>
+        <div class="song amplitude-song-container amplitude-play-pause my-8 hover:bg-slate-900 p-2 rounded-lg" data-amplitude-song-index="0">
+          <div class="song-now-playing-icon-container">
+            <div class="play-button-container">
+  
+            </div>
+            <div>
+            
+
+              <div class="song-meta-data flex">
+                <div class="w-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 class="font-primary song-title text-lg text-white">Everything My Love</h1>
+                  <p class="song-artist text-white">Lumière Anderson</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="song amplitude-song-container amplitude-play-pause my-8 hover:bg-slate-900 p-2 rounded-lg" data-amplitude-song-index="1">
+          <div class="song-now-playing-icon-container">
+            <div class="play-button-container">
+
+            </div>
+            <div>
+
+
+              <div class="song-meta-data flex">
+                <div class="w-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 class="font-primary song-title text-lg text-white">Salem Ilese - PS5 Tik Tik Compilation</h1>
+                  <p class="song-artist text-white">Lumière Anderson and more artist</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="song amplitude-song-container amplitude-play-pause my-8 hover:bg-slate-900 p-2 rounded-lg" data-amplitude-song-index="2">
+          <div class="song-now-playing-icon-container">
+            <div class="play-button-container">
+
+            </div>
+            <div>
+
+
+              <div class="song-meta-data flex">
+                <div class="w-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 class="font-primary song-title text-lg text-white">Troi Cho</h1>
+                  <p class="song-artist text-white">Suboi - Lumière Anderson Remix</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="song amplitude-song-container amplitude-play-pause my-8 hover:bg-slate-900 p-2 rounded-lg" data-amplitude-song-index="3">
+          <div class="song-now-playing-icon-container">
+            <div class="play-button-container">
+
+            </div>
+            <div>
+
+
+              <div class="song-meta-data flex">
+                <div class="w-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 class="font-primary song-title text-lg text-white">Golden Hour</h1>
+                  <p class="song-artist text-white">JVKE - Lumière Anderson Remix</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="song amplitude-song-container amplitude-play-pause my-8 hover:bg-slate-900 p-2 rounded-lg" data-amplitude-song-index="4">
+          <div class="song-now-playing-icon-container">
+            <div class="play-button-container">
+
+            </div>
+            <div>
+
+
+              <div class="song-meta-data flex">
+                <div class="w-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 class="font-primary song-title text-lg text-white">Tabun</h1>
+                  <p class="song-artist text-white">YOASOBI - Lumière Anderson Remix</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="song amplitude-song-container amplitude-play-pause my-8 hover:bg-slate-900 p-2 rounded-lg" data-amplitude-song-index="5">
+          <div class="song-now-playing-icon-container">
+            <div class="play-button-container">
+
+            </div>
+            <div>
+
+
+              <div class="song-meta-data flex">
+                <div class="w-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 class="font-primary song-title text-lg text-white">Chay Khoi The Gioi Nay</h1>
+                  <p class="song-artist text-white">Da LAB, Phuong Ly - Lumière Anderson Remix</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="song amplitude-song-container amplitude-play-pause my-8 hover:bg-slate-900 p-2 rounded-lg" data-amplitude-song-index="6">
+          <div class="song-now-playing-icon-container">
+            <div class="play-button-container">
+
+            </div>
+            <div>
+
+
+              <div class="song-meta-data flex">
+                <div class="w-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 class="font-primary song-title text-lg text-white">Loving You</h1>
+                  <p class="song-artist text-white">Black Coat</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="song amplitude-song-container amplitude-play-pause my-8 hover:bg-slate-900 p-2 rounded-lg" data-amplitude-song-index="7">
+          <div class="song-now-playing-icon-container">
+            <div class="play-button-container">
+
+            </div>
+            <div>
+
+
+              <div class="song-meta-data flex">
+                <div class="w-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 class="font-primary song-title text-lg text-white">BeatBlackCoat</h1>
+                  <p class="song-artist text-white">Black Coat</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="song amplitude-song-container amplitude-play-pause my-8 hover:bg-slate-900 p-2 rounded-lg" data-amplitude-song-index="8">
+          <div class="song-now-playing-icon-container">
+            <div class="play-button-container">
+
+            </div>
+            <div>
+
+
+              <div class="song-meta-data flex">
+                <div class="w-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h1 class="font-primary song-title text-lg text-white">Chỉ Cần Em Thôi</h1>
+                  <p class="song-artist text-white">Tú Anh</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="h-26 border border-pink-600 rounded-lg">
+          <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
+              <button type="button" data-amplitude-playlist="official_track" class="amplitude-prev inline-flex flex-col items-center justify-center px-5 py-5 hover:bg-pink-500 rounded-l-md">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z" />
+                </svg>
+              </button>
+              <button type="button" data-amplitude-playlist="official_track" class="amplitude-play inline-flex flex-col items-center justify-center px-5 py-5 hover:bg-pink-500">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                </svg>
+              </button>
+              <button type="button" data-amplitude-playlist="official_track" class="amplitude-pause inline-flex flex-col items-center justify-center px-5 py-5 hover:bg-pink-500">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+                </svg>
+              </button>
+              <button type="button" data-amplitude-playlist="official_track" class="amplitude-next inline-flex flex-col items-center justify-center px-5 py-5 hover:bg-pink-500 rounded-r-md">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z" />
+                </svg>
+              </button>
+          </div>
+        </div>
+        <hr class="h-px my-8 bg-pink-500 border-0">
+        <div>
+          <h1 class="font-primary text-white text-2xl font-bold mb-2">Stream Link</h1>
+
+
+          <div class="inline-flex rounded-lg shadow-sm border border-pink-500" role="group">
+            <a type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-orange-500 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700">
+              <svg fill="#ffffff" class="w-9 h-9" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                 viewBox="0 0 300 300" xml:space="preserve">
+              <g id="XMLID_526_">
+                <path id="XMLID_527_" d="M14.492,208.896c0.619,0,1.143-0.509,1.232-1.226l3.365-26.671l-3.355-27.278
+                  c-0.1-0.717-0.623-1.23-1.242-1.23c-0.635,0-1.176,0.524-1.26,1.23l-2.941,27.278l2.941,26.662
+                  C13.316,208.377,13.857,208.896,14.492,208.896z"/>
+                <path id="XMLID_530_" d="M3.397,198.752c0.608,0,1.101-0.473,1.19-1.18l2.608-16.574l-2.608-16.884
+                  c-0.09-0.685-0.582-1.18-1.19-1.18c-0.635,0-1.127,0.495-1.217,1.19L0,180.999l2.18,16.569
+                  C2.27,198.269,2.762,198.752,3.397,198.752z"/>
+                <path id="XMLID_531_" d="M27.762,148.644c-0.08-0.867-0.715-1.5-1.503-1.5c-0.782,0-1.418,0.633-1.491,1.5l-2.811,32.355
+                  l2.811,31.174c0.073,0.862,0.709,1.487,1.491,1.487c0.788,0,1.423-0.625,1.503-1.487l3.18-31.174L27.762,148.644z"/>
+                <path id="XMLID_532_" d="M38.152,214.916c0.922,0,1.668-0.759,1.758-1.751l3.005-32.156l-3.005-33.258
+                  c-0.09-0.999-0.836-1.749-1.758-1.749c-0.935,0-1.692,0.751-1.756,1.754l-2.656,33.253l2.656,32.156
+                  C36.46,214.158,37.217,214.916,38.152,214.916z"/>
+                <path id="XMLID_533_" d="M50.127,215.438c1.074,0,1.936-0.86,2.025-2.011l-0.01,0.008l2.83-32.426l-2.83-30.857
+                  c-0.08-1.132-0.941-2.005-2.016-2.005c-1.09,0-1.947,0.873-2.012,2.014l-2.502,30.849l2.502,32.418
+                  C48.18,214.578,49.037,215.438,50.127,215.438z"/>
+                <path id="XMLID_534_" d="M67.132,181.017l-2.655-50.172c-0.074-1.272-1.065-2.286-2.281-2.286c-1.207,0-2.195,1.013-2.269,2.286
+                  l-2.35,50.172l2.35,32.418c0.074,1.278,1.063,2.278,2.269,2.278c1.217,0,2.207-1,2.281-2.278v0.009L67.132,181.017z"/>
+                <path id="XMLID_535_" d="M74.386,215.766c1.339,0,2.45-1.111,2.513-2.529v0.021l2.482-32.233l-2.482-61.656
+                  c-0.063-1.418-1.174-2.529-2.513-2.529c-1.37,0-2.471,1.111-2.545,2.529l-2.185,61.656l2.195,32.222
+                  C71.915,214.655,73.016,215.766,74.386,215.766z"/>
+                <path id="XMLID_536_" d="M86.645,111.435c-1.508,0-2.725,1.238-2.787,2.799l-2.033,66.801l2.033,31.884
+                  c0.063,1.553,1.279,2.783,2.787,2.783c1.504,0,2.73-1.22,2.783-2.788v0.016l2.307-31.895l-2.307-66.801
+                  C89.375,112.663,88.148,111.435,86.645,111.435z"/>
+                <path id="XMLID_782_" d="M99.01,215.766c1.656,0,2.975-1.336,3.037-3.056v0.019l2.133-31.693l-2.133-69.045
+                  c-0.063-1.714-1.381-3.056-3.037-3.056c-1.666,0-3.005,1.342-3.031,3.056l-1.916,69.045l1.916,31.693
+                  C96.005,214.43,97.344,215.766,99.01,215.766z"/>
+                <path id="XMLID_783_" d="M111.477,215.734c1.787,0,3.237-1.463,3.291-3.318v0.029l1.963-31.404l-1.963-67.289
+                  c-0.054-1.854-1.504-3.311-3.291-3.311c-1.8,0-3.25,1.456-3.303,3.311l-1.725,67.289l1.736,31.389
+                  C108.227,214.271,109.677,215.734,111.477,215.734z"/>
+                <path id="XMLID_784_" d="M129.359,181.041l-1.777-64.836c-0.043-2-1.609-3.571-3.551-3.571c-1.947,0-3.514,1.571-3.555,3.584
+                  l-1.594,64.823l1.594,31.198c0.041,1.984,1.607,3.556,3.555,3.556c1.941,0,3.508-1.572,3.551-3.585v0.029L129.359,181.041z"/>
+                <path id="XMLID_785_" d="M136.682,215.853c2.064,0,3.773-1.717,3.805-3.828v0.017l1.613-30.984l-1.613-77.153
+                  c-0.031-2.119-1.74-3.833-3.805-3.833c-2.063,0-3.767,1.722-3.809,3.844l-1.434,77.111l1.434,31.016
+                  C132.915,214.136,134.619,215.853,136.682,215.853z"/>
+                <path id="XMLID_786_" d="M149.291,92.814c-2.229,0-4.037,1.849-4.074,4.103l-1.667,84.151l1.677,30.526
+                  c0.027,2.225,1.836,4.068,4.064,4.068c2.195,0,4.037-1.844,4.047-4.105v0.037l1.82-30.526l-1.82-84.151
+                  C153.328,94.655,151.486,92.814,149.291,92.814z"/>
+                <path id="XMLID_787_" d="M160.82,215.882c0.09,0.008,101.623,0.056,102.275,0.056c20.385,0,36.904-16.722,36.904-37.357
+                  c0-20.624-16.52-37.349-36.904-37.349c-5.059,0-9.879,1.034-14.275,2.907c-2.922-33.671-30.815-60.077-64.842-60.077
+                  c-8.318,0-16.429,1.662-23.593,4.469c-2.788,1.09-3.534,2.214-3.556,4.392v118.539C156.861,213.752,158.607,215.655,160.82,215.882
+                  z"/>
+              </g>
+              </svg>
+            </a>
+            <a type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-green-500 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700">
+              <svg class="w-9 h-9" viewBox="0 0 20 20" version="1.1" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                  <title>spotify [#162]</title>
+                  <desc>Created with Sketch.</desc>
+                  <defs>
+
+              </defs>
+                  <g id="Page-1" stroke="none" stroke-width="1" fill="#ffffff" fill-rule="evenodd">
+                      <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -7479.000000)" fill="#000000">
+                          <g id="icons" transform="translate(56.000000, 160.000000)">
+                              <path d="M99.915,7327.865 C96.692,7325.951 91.375,7325.775 88.297,7326.709 C87.803,7326.858 87.281,7326.58 87.131,7326.085 C86.981,7325.591 87.26,7325.069 87.754,7324.919 C91.287,7323.846 97.159,7324.053 100.87,7326.256 C101.314,7326.52 101.46,7327.094 101.196,7327.538 C100.934,7327.982 100.358,7328.129 99.915,7327.865 L99.915,7327.865 Z M99.81,7330.7 C99.584,7331.067 99.104,7331.182 98.737,7330.957 C96.05,7329.305 91.952,7328.827 88.773,7329.792 C88.36,7329.916 87.925,7329.684 87.8,7329.272 C87.676,7328.86 87.908,7328.425 88.32,7328.3 C91.951,7327.198 96.466,7327.732 99.553,7329.629 C99.92,7329.854 100.035,7330.334 99.81,7330.7 L99.81,7330.7 Z M98.586,7333.423 C98.406,7333.717 98.023,7333.81 97.729,7333.63 C95.381,7332.195 92.425,7331.871 88.944,7332.666 C88.609,7332.743 88.274,7332.533 88.198,7332.197 C88.121,7331.862 88.33,7331.528 88.667,7331.451 C92.476,7330.58 95.743,7330.955 98.379,7332.566 C98.673,7332.746 98.766,7333.129 98.586,7333.423 L98.586,7333.423 Z M94,7319 C88.477,7319 84,7323.477 84,7329 C84,7334.523 88.477,7339 94,7339 C99.523,7339 104,7334.523 104,7329 C104,7323.478 99.523,7319.001 94,7319.001 L94,7319 Z" id="spotify-[#162]">
+
+              </path>
+                          </g>
+                      </g>
+                  </g>
+              </svg>
+            </a>
+            <a href="#" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700">
+              <svg class="w-9 h-9" version="1.1" viewBox="0 0 250 163.17" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <metadata>
+              <rdf:RDF>
+              <cc:Work rdf:about="">
+              <dc:format>image/svg+xml</dc:format>
+              <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+              <dc:title/>
+              </cc:Work>
+              </rdf:RDF>
+              </metadata>
+              <defs>
+              <linearGradient id="e" x1="90.71" x2="90.5" y1="62.45" y2="49.29" gradientTransform="matrix(2.4611 0 0 2.4611 0 -77.943)" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#358c7b" offset="0"/>
+              <stop stop-color="#33a65e" offset=".5256"/>
+              </linearGradient>
+              <linearGradient id="a" x1="79.29" x2="101.91" y1="79.49" y2="67.97" gradientTransform="matrix(2.4611 0 0 2.4611 0 -77.943)" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#222b90" offset="0"/>
+              <stop stop-color="#367b99" offset="1"/>
+              </linearGradient>
+              <linearGradient id="b" x2="21.95" y1="91.55" y2="91.55" gradientTransform="matrix(2.4611 0 0 2.4611 0 -77.943)" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f90" offset="0"/>
+              <stop stop-color="#ff8000" offset="1"/>
+              </linearGradient>
+              <linearGradient id="h" x1="26.55" x2="48.49" y1="91.55" y2="91.55" gradientTransform="matrix(2.4611 0 0 2.4611 0 -77.943)" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ff8000" offset="0"/>
+              <stop stop-color="#cc1953" offset="1"/>
+              </linearGradient>
+              <linearGradient id="g" x1="53.09" x2="75.03" y1="91.55" y2="91.55" gradientTransform="matrix(2.4611 0 0 2.4611 0 -77.943)" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#cc1953" offset="0"/>
+              <stop stop-color="#241284" offset="1"/>
+              </linearGradient>
+              <linearGradient id="i" x1="79.6" x2="101.55" y1="91.55" y2="91.55" gradientTransform="matrix(2.4611 0 0 2.4611 0 -77.943)" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#222b90" offset="0"/>
+              <stop stop-color="#3559a6" offset="1"/>
+              </linearGradient>
+              <linearGradient id="c" x1="52.22" x2="75.9" y1="77.19" y2="70.27" gradientTransform="matrix(2.4611 0 0 2.4611 0 -77.943)" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#cc1953" offset="0"/>
+              <stop stop-color="#241284" offset="1"/>
+              </linearGradient>
+              <linearGradient id="f" x1="25.76" x2="49.27" y1="69.45" y2="78.01" gradientTransform="matrix(2.4611 0 0 2.4611 0 -77.943)" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#fc0" offset=".0026698"/>
+              <stop stop-color="#ce1938" offset=".9999"/>
+              </linearGradient>
+              <linearGradient id="d" x1="28.39" x2="46.65" y1="47.49" y2="64.33" gradientTransform="matrix(2.4611 0 0 2.4611 0 -77.943)" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffd100" offset=".0026698"/>
+              <stop stop-color="#fd5a22" offset="1"/>
+              </linearGradient>
+              </defs>
+              <path d="m250 0v31.625h-54.046v-31.625h54.046z" fill="#40ab5d" stroke-width="2.4611"/>
+              <path d="m250 43.832v31.625h-54.046v-31.625h54.046z" fill="url(#e)" stroke-width="2.4611"/>
+              <path d="m250 87.69v31.625h-54.046v-31.625h54.046z" fill="url(#a)" stroke-width="2.4611"/>
+              <path d="m54.046 131.55v31.625h-54.046v-31.625h54.046z" fill="url(#b)" stroke-width="2.4611"/>
+              <path d="m119.34 131.55v31.625h-54.071v-31.625h54.071z" fill="url(#h)" stroke-width="2.4611"/>
+              <path d="m184.73 131.55v31.625h-54.071v-31.625h54.071z" fill="url(#g)" stroke-width="2.4611"/>
+              <path d="m250 131.55v31.625h-54.046v-31.625h54.046z" fill="url(#i)" stroke-width="2.4611"/>
+              <path d="m184.73 87.69v31.625h-54.071v-31.625h54.071z" fill="url(#c)" stroke-width="2.4611"/>
+              <path d="m119.34 87.69v31.625h-54.071v-31.625h54.071z" fill="url(#f)" stroke-width="2.4611"/>
+              <path d="m119.34 43.832v31.625h-54.071v-31.625h54.071z" fill="url(#d)" stroke-width="2.4611"/>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+      <div class="bg-black rounded-lg shadow-md">
+        <div class="amplitude-visualization mt-4 h-screen w-full border border-pink-500 rounded-lg"></div>
+      </div>
+    </div>
+  </section>
+  <section class="sm:ml-14 bg-black">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+        <div class="max-w-screen-md mb-8 lg:mb-16">
+            <h2 class="font-primary mb-4 text-4xl tracking-tight font-extrabold text-white">Designed for developer and music producer</h2>
+            <p class="text-white sm:text-xl">I made this streaming page with the purpose that...</p>
+        </div>
+        <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+            <div>
+                <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+
+                </div>
+                <h3 class="font-primary mb-2 text-xl font-bold text-white">Level up the music streaming experience</h3>
+                <p class="text-white">My streaming page is the greatest option you! It's made for level up your music streaming experience!</p>
+            </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
+                  </svg>
+
+              </div>
+              <h3 class="font-primary mb-2 text-xl font-bold text-white">Visualize your music like you've never seen before</h3>
+              <p class="text-white">Vizualize your music like you've never seen before with the music visualization!</p>
+          </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+
+              </div>
+              <h3 class="font-primary mb-2 text-xl font-bold text-white">Use great and grant the full control with keyboard and Bluetooth devices</h3>
+              <p class="text-white">Use great and grant the full control with keyboard and Bluetooth devices! Tell your friends and family about your music!</p>
+          </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                </svg>
+
+
+              </div>
+              <h3 class="font-primary mb-2 text-xl font-bold text-white">Showcase your website and links addons</h3>
+              <p class="text-white">Simply showcase your website and links addons with the link addons inside the HTML file if you want to add links to your website!</p>
+          </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                </svg>
+              </div>
+              <h3 class="font-primary mb-2 text-xl font-bold text-white">Complicated controls in the HTML file</h3>
+              <p class="text-white">With the complicated controls in the HTML file, you can visualize your music in your way!</p>
+          </div>
+          <div>
+              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" />
+                </svg>
+
+
+              </div>
+              <h3 class="font-primary mb-2 text-xl font-bold text-white">Functions, config and everything I made just one file called "index.html"</h3>
+              <p class="text-white">This is the core of the link addons. With this file, you can add music, videos, images, buttons, animations, and more!</p>
+          </div>
+        </div>
+    </div>
+  </section>
+  <section id="about" class="sm:ml-14 bg-black">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="max-w-screen-lg text-white sm:text-lg">
+            <h2 class="mb-4 text-4xl tracking-tight font-bold font-primary">I'm Macärdès De Pröducèz</h2>
+            <p class="font-secondary mb-4 font-light">My work is to make something change your mind, visualize it, make everyone have a fantastic feeling!</p>
+            <p class="font-secondary mb-4 font-medium">My web music streaming page is a part of it. After you buy it and config your music, edit something inside, you made it your own!</p>
+            <a href="https://replit.com/@themacardes/official?v=1" class="inline-flex items-center font-medium font-secondary text-primary-600 hover:text-primary-800">
+                Fork on Replit
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-1 w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+
+            </a>
+        </div>
+    </div>
+  </section>
+  <section id="contact" class="sm:ml-14">
+    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+        <h2 class="font-primary mb-4 text-4xl tracking-tight font-extrabold text-center text-white">Contact me</h2>
+        <p class="font-secondary mb-8 lg:mb-16 font-light text-center text-white">Have any trouble? Contact me!</p>
+        <form action="https://formsubmit.co/dayn01914@gmail.com" method="POST" class="font-secondary space-y-8">
+            <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
+                <input name="email" type="email" id="email" class="shadow-sm bg-black border border-primary-300 text-white text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="name@example.com" required>
+            </div>
+            <div>
+                <label for="subject" class="block mb-2 text-sm font-medium text-white">Subject</label>
+                <input name="subject" type="text" id="subject" class="shadow-sm bg-black border border-primary-300 text-white text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Let me know how i can help you" required>
+            </div>
+            <div class="sm:col-span-2">
+                <label for="message" class="block mb-2 text-sm font-medium text-white">Your message</label>
+                <textarea name="message" id="message" rows="6" class="shadow-sm bg-black border border-primary-300 text-white text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Leave a comment..."></textarea>
+            </div>
+            <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300">Send message</button>
+        </form>
+    </div>
+  </section>
+
+  <footer class="sm:ml-14 font-primary bg-black rounded-lg shadow m-4">
+      <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+          <div class="sm:flex sm:items-center sm:justify-between">
+              <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                  <img src="assets/logo/logo.png" class="h-8" alt="M Logo" />
+              </a>
+              <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0">
+                  <li>
+                      <a href="https://www.facebook.com/profile.php?id=61554919799713&mibextid=LQQJ4d" class="hover:underline me-4 md:me-6">Facebook</a>
+                  </li>
+                  <li>
+                      <a href="https://www.instagram.com/themacardes/" class="hover:underline me-4 md:me-6">Instagram</a>
+                  </li>
+                  <li>
+                      <a href="https://www.youtube.com/@macadesdeproducez" class="hover:underline me-4 md:me-6">YouTube</a>
+                  </li>
+                  <li>
+                      <a href="www.tiktok.com/@themacardes" class="hover:underline">Tik Tok</a>
+                  </li>
+              </ul>
+          </div>
+          <hr class="my-6 border-pink-500 sm:mx-auto lg:my-8" />
+        <span class="block text-sm text-white sm:text-end">© 2023 <a href="index.html" class="hover:underline">Macärdès De Pröducèz & VNR&I Association</a>. All Rights Reserved. Made with TailwindCSS & Flowbite</span>
+      </div>
+  </footer>
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/visualizations/michaelbromley.js"></script>
+  <script
+    src="https://replit.com/public/js/replit-badge-v2.js"
+    theme="pink"
+    position="bottom-right"
+    caption="Macädès De Pröducèz on Replit"
+  ></script>
+  <!-- Config your song, playlist, infomation rights here! -->
+  <script>
+    Amplitude.init({
+      playback_speed: 1.0,
+      shuffle_on: true,
+      volume: 35,
+      volume_increment: 10,
+      volume_decrement: 10,
+      delay: 3000,
+      continue_next: false,
+      debug: true,
+      bindings: {
+        39: 'next'
+      },
+      default_album_art: "album/art/1.png",
+      songs: [
+        {
+          "name": "Everything My Love",
+          "artist": "Lumière Anderson",
+          "album": "Official Track",
+          "url": "songs/everything-my-love/audio.mp3",
+          "cover_art_url": "cover/art/1.png",
+          "time_callbacks": {
+              1: function(){
+                console.log( "1 second into the song" )
+              },
+              90: function(){
+                console.log( "1 minute 30 seconds into the song" );
+              },
+              110: function(){
+                console.log( "1 minute 50 seconds into the song" );
+              }
+          }
+        },
+        {
+          "name": "Salem Ilese - PS5 Tik Tik Compilation",
+          "artist": "Lumière Anderson and more artist",
+          "album": "Official Track",
+          "url": "songs/salem-ilese-ps5-tik-tok-compilation/audio.mp3",
+          "cover_art_url": "cover/art/2.png",
+          "lyrics": "These are song lyrics",
+          "time_callbacks": {
+              1: function(){
+                console.log( "1 second into the song" )
+              },
+              90: function(){
+                console.log( "1 minute 30 seconds into the song" );
+              },
+              110: function(){
+                console.log( "1 minute 50 seconds into the song" );
+              }
+          }
+        },
+        {
+          "name": "Troi Cho",
+          "artist": "Suboi - Lumière Anderson Remix",
+          "album": "Official Track",
+          "url": "songs/troi-cho-remix/audio.mp3",
+          "cover_art_url": "cover/art/3.png",
+          "lyrics": "These are song lyrics",
+          "time_callbacks": {
+              1: function(){
+                console.log( "1 second into the song" )
+              },
+              90: function(){
+                console.log( "1 minute 30 seconds into the song" );
+              },
+              110: function(){
+                console.log( "1 minute 50 seconds into the song" );
+              }
+          }
+        },
+        {
+          "name": "Golden Hour",
+          "artist": "JVKE - Lumière Anderson Remix",
+          "album": "Official Track",
+          "url": "songs/golden-hour-remix/audio.mp3",
+          "cover_art_url": "cover/art/4.png",
+          "lyrics": "These are song lyrics",
+          "time_callbacks": {
+              1: function(){
+                console.log( "1 second into the song" )
+              },
+              90: function(){
+                console.log( "1 minute 30 seconds into the song" );
+              },
+              110: function(){
+                console.log( "1 minute 50 seconds into the song" );
+              }
+          }
+        },
+        {
+          "name": "Tabun",
+          "artist": "Yoasobi - Lumière Anderson Remix",
+          "album": "Official Track",
+          "url": "songs/tabun-remix/audio.mp3",
+          "cover_art_url": "cover/art/5.png",
+          "lyrics": "These are song lyrics",
+          "time_callbacks": {
+              1: function(){
+                console.log( "1 second into the song" )
+              },
+              90: function(){
+                console.log( "1 minute 30 seconds into the song" );
+              },
+              110: function(){
+                console.log( "1 minute 50 seconds into the song" );
+              }
+          }
+        },
+        {
+          "name": "Chay Khoi The Gioi Nay",
+          "artist": "Da LAB, Phuong Ly - Lumière Anderson Remix",
+          "album": "Official Track",
+          "url": "songs/cktgn-remix/audio.mp3",
+          "cover_art_url": "cover/art/6.png",
+          "lyrics": "These are song lyrics",
+          "time_callbacks": {
+              1: function(){
+                console.log( "1 second into the song" )
+              },
+              90: function(){
+                console.log( "1 minute 30 seconds into the song" );
+              },
+              110: function(){
+                console.log( "1 minute 50 seconds into the song" );
+              }
+          }
+        },
+        {
+          "name": "Loving You",
+          "artist": "Black Coat",
+          "album": "Official Track",
+          "url": "songs/loving-you/audio.mp3",
+          "cover_art_url": "cover/art/7.png",
+          "lyrics": "These are song lyrics",
+          "time_callbacks": {
+              1: function(){
+                console.log( "1 second into the song" )
+              },
+              90: function(){
+                console.log( "1 minute 30 seconds into the song" );
+              },
+              110: function(){
+                console.log( "1 minute 50 seconds into the song" );
+              }
+          }
+        },
+        {
+          "name": "BeatBlackCoat",
+          "artist": "Black Coat",
+          "album": "Official Track",
+          "url": "songs/beatblackcoat/audio.mp3",
+          "cover_art_url": "cover/art/8.png",
+          "lyrics": "These are song lyrics",
+          "time_callbacks": {
+              1: function(){
+                console.log( "1 second into the song" )
+              },
+              90: function(){
+                console.log( "1 minute 30 seconds into the song" );
+              },
+              110: function(){
+                console.log( "1 minute 50 seconds into the song" );
+              }
+          }
+        },
+        {
+          "name": "Chỉ Cần Em Thôi",
+          "artist": "Tú Anh",
+          "album": "Official Track",
+          "url": "songs/chicanemthoi/audio.mp3",
+          "cover_art_url": "cover/art/9.png",
+          "lyrics": "These are song lyrics",
+          "time_callbacks": {
+              1: function(){
+                console.log( "1 second into the song" )
+              },
+              90: function(){
+                console.log( "1 minute 30 seconds into the song" );
+              },
+              110: function(){
+                console.log( "1 minute 50 seconds into the song" );
+              }
+          }
+        }
+      ],
+      playlists: {
+        "official_track": {
+          songs: [0, 1, 2, 3, 4, 5, 6, 7],
+          title: 'Official Track',
+          description: 'Lumière Anderson Official Tracks',
+          author: 'Lumière Anderson'
+        }
+      },
+      start_song: 0,
+      preload: "auto",
+      visualizations: [
+        {
+          object: MichaelBromleyVisualization,
+          params: {
+            container: document.getElementById("visualization-container"),
+            options: {
+              width: 400,
+              height: 200,
+              color: '#f5acb'
+            }
+          }
+        }
+      ],
+      visualization: 'michaelbromley_visualization',
+      waveforms: {
+        sample_rate: 3000
+      }
+    });
+  </script>
+  
+</body>
+
+</html>
